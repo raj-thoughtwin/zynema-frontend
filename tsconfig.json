@@ -8,6 +8,12 @@
     },
     {
       "path": "./apps/zynema"
+    },
+    {
+      "path": "./zynema-frontend-e2e"
+    },
+    {
+      "path": "./zynema-frontend"
     }
   ]
 }
