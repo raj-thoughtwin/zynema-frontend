@@ -1,0 +1,58 @@
+@use './theme' as *;
+
+.neon-glow {
+  @include neon-glow($neon-purple);
+  color: #fff;
+}
+
+.neon-navbar {
+  background: $base-bg-dark !important;
+  box-shadow: 0 4px 32px 0 $neon-violet;
+  border-bottom: 2px solid $neon-pink;
+}
+
+.neon-btn {
+  @include neon-button-gradient;
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+}
+
+.neon-btn-outline {
+  background: transparent;
+  border: 2px solid $neon-pink;
+  color: $neon-pink;
+  @include neon-outline($neon-pink);
+
+  &:hover {
+    background: $neon-pink;
+    color: #fff;
+    @include neon-outline($neon-violet);
+  }
+}
+
+.neon-card {
+  background: $base-bg-darker;
+  border-radius: 1rem;
+  box-shadow: 0 2px 16px 2px $neon-purple, 0 0 24px 0 $neon-pink inset;
+  border: 2px solid transparent;
+  transition: box-shadow 0.2s, border-color 0.2s;
+  overflow: hidden;
+
+  &:hover {
+    @include neon-card-hover($neon-pink);
+    z-index: 2;
+  }
+}
+
+.neon-card-img {
+  border-radius: 1rem 1rem 0 0;
+}
+
+.neon-input {
+  @include neon-input;
+  width: 100%;
+  margin-bottom: 1rem;
+}

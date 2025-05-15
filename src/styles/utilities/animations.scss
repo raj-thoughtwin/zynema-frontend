@@ -1,0 +1,41 @@
+@mixin fade-in($duration: 0.3s, $delay: 0s) {
+  animation: fade-in $duration ease-in $delay;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@mixin slide-in($direction: down, $duration: 0.3s, $delay: 0s) {
+  animation: slide-in-#{$direction} $duration ease-out $delay;
+}
+
+@keyframes slide-in-down {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slide-in-up {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@mixin bounce($duration: 1s, $delay: 0s) {
+  animation: bounce $duration ease-in-out $delay infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}

@@ -1,0 +1,59 @@
+// utilities/_neon-theme.scss
+
+// Neon Accent Colors
+$red: #B4121B;
+$black: #000000;
+$dark-black: #1A1A1A;
+
+// Base Backgrounds
+$base-bg-dark: $black;
+$base-bg-darker: $dark-black;
+
+// Red Gradient
+$red-gradient: linear-gradient(90deg, $red 0%, $dark-black 100%);
+
+// Bold Red Button
+@mixin bold-red-btn {
+  background: $red;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    background: darken($red, 10%);
+  }
+}
+
+// Red Input Field
+@mixin red-input {
+  background: transparent;
+  border: 2px solid $red;
+  border-radius: 8px;
+  color: #fff;
+  padding: 0.75rem 1rem;
+  outline: none;
+  &:focus {
+    border-color: darken($red, 10%);
+  }
+}
+
+// Card Hover
+@mixin card-hover {
+  box-shadow: 0 2px 16px 2px $red, 0 0 24px 0 $red inset;
+  border-color: $red;
+}
+
+// Responsive Card Container
+@mixin card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+}
