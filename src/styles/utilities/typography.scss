@@ -1,0 +1,52 @@
+// utilities/_typography.scss
+
+// Font Families
+$font-family-base: 'Inter', system-ui, -apple-system, sans-serif !default;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;
+
+// Font Sizes
+$font-size-root: 16px !default;
+$font-size-base: 1rem !default;
+$font-size-sm: 0.875rem !default;
+$font-size-lg: 1.25rem !default;
+$font-size-xl: 1.5rem !default;
+$font-size-xxl: 2rem !default;
+$font-size-xxxl: 3rem !default;
+
+// Font Weights
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-medium: 500 !default;
+$font-weight-semibold: 600 !default;
+$font-weight-bold: 700 !default;
+
+// Line Heights
+$line-height-base: 1.5 !default;
+$line-height-sm: 1.25 !default;
+$line-height-lg: 2 !default;
+
+// Font Size Utility
+@mixin font-size($size) {
+  font-size: $size;
+  line-height: $line-height-base;
+}
+
+// Font Weight Utility
+@mixin font-weight($weight) {
+  font-weight: $weight;
+}
+
+// Single-line Truncate
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Multi-line Truncate
+@mixin text-overflow($lines: 1) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+}

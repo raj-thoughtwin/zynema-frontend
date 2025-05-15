@@ -1,0 +1,39 @@
+// Spacing utilities
+$spacing: (
+  xs: 0.25rem,
+  sm: 0.5rem,
+  md: 1rem,
+  lg: 1.5rem,
+  xl: 2rem,
+  xxl: 3rem
+);
+
+@each $size, $value in $spacing {
+  .p-#{$size} {
+    padding: $value;
+  }
+  
+  .py-#{$size} {
+    padding-top: $value;
+    padding-bottom: $value;
+  }
+  
+  .px-#{$size} {
+    padding-left: $value;
+    padding-right: $value;
+  }
+  
+  .m-#{$size} {
+    margin: $value;
+  }
+  
+  .my-#{$size} {
+    margin-top: $value;
+    margin-bottom: $value;
+  }
+  
+  .mx-#{$size} {
+    margin-left: $value;
+    margin-right: $value;
+  }
+}

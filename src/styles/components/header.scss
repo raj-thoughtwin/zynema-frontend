@@ -1,0 +1,98 @@
+@use "../variables" as variables;
+
+// Header styles
+.navbar {
+  background-color: variables.$primary !important; // Red header
+  padding: variables.$spacing-lg variables.$spacing-xl;
+
+  .navbar-brand {
+    font-size: variables.$font-size-xxl;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: variables.$text-primary !important; // White logo/title
+    transition: variables.$transition-base;
+
+    &:hover {
+      color: variables.$text-primary !important;
+      transform: scale(1.02);
+    }
+  }
+
+  .nav-link {
+    color: variables.$text-primary !important; // White nav links
+    padding: variables.$spacing-sm variables.$spacing-md;
+    border-radius: variables.$spacing-sm;
+    transition: variables.$transition-base;
+
+    &:hover {
+      color: variables.$text-primary !important; // Red text on hover
+      background-color: variables.$background !important; // Black background on hover
+    }
+
+    &.active {
+      color: variables.$text-primary !important; // Red text for active link
+      background-color: variables.$background !important; // Black background for active link
+    }
+  }
+
+  .navbar-toggler {
+    border-color: transparent;
+    padding: variables.$spacing-sm;
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba(255, 255, 255, 0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+      transition: variables.$transition-fast;
+
+      &:hover {
+        background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba(255, 255, 255, 0.7)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+      }
+    }
+  }
+
+  .d-flex {
+    a {
+      color: variables.$text-secondary !important;
+      padding: variables.$spacing-sm;
+      transition: variables.$transition-fast;
+
+      &:hover {
+        color: variables.$text-primary !important;
+      }
+
+      &.search-btn {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.15);
+        }
+      }
+    }
+  }
+
+  // Dropdown Menu Styles
+.dropdown-menu {
+  background-color: variables.$background !important; // Dark background
+  color: variables.$text-primary !important;
+
+  .dropdown-item {
+    color: variables.$text-primary !important; // White text
+    transition: variables.$transition-fast;
+
+    &:hover {
+      background-color: variables.$text-primary !important; // White background
+      color: variables.$background !important; // Black text
+    }
+  }
+}
+
+}

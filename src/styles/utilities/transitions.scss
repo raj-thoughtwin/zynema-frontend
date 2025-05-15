@@ -1,0 +1,49 @@
+// utilities/_transitions.scss
+
+// Transition Timings
+$transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !default;
+$transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !default;
+
+// Base Transitions
+@mixin transition-base {
+  transition: $transition-base;
+}
+
+@mixin transition-fast {
+  transition: $transition-fast;
+}
+
+// Scale Transition
+@mixin scale-transition($scale: 1.05) {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: scale($scale);
+  }
+}
+
+// Fade Transition
+@mixin fade-transition($opacity: 0.7) {
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    opacity: $opacity;
+  }
+}
+
+// Slide Transition
+@mixin slide-transition($direction: down, $distance: 10px) {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    @if $direction == down {
+      transform: translateY($distance);
+    } @else if $direction == up {
+      transform: translateY(-$distance);
+    } @else if $direction == left {
+      transform: translateX(-$distance);
+    } @else if $direction == right {
+      transform: translateX($distance);
+    }
+  }
+}
