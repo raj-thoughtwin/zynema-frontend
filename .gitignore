@@ -45,5 +45,8 @@ Thumbs.db
 .next
 out
 
+# Environment variables
+.env
+
 test-output
 node_modules
