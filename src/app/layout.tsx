@@ -12,6 +12,8 @@ export const metadata = {
 };
 
 import { Toaster } from "react-hot-toast";
+import { LoaderProvider } from "@/utils/LoaderContext";
+import GlobalLoader from "@/components/GlobalLoader";
 
 export default function RootLayout({
   children,
@@ -22,8 +24,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <BootstrapClient />
+        <LoaderProvider>
+          <GlobalLoader />
         <Toaster position="top-right" toastOptions={{ duration: 4000 }} />
         {children}
+        </LoaderProvider>
       </body>
     </html>
   );

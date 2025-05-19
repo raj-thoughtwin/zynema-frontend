@@ -3,9 +3,9 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import MovieList from "@/components/MovieList";
-import Player from "@/components/Player";
 import { useState } from "react";
 import { Movie } from "@/types/Movie";
+import { useLoader } from "@/utils/LoaderContext";
 
 interface MovieApiResponse {
   [category: string]: Movie[];
@@ -13,12 +13,13 @@ interface MovieApiResponse {
 
 export default function DashboardPage() {
   const router = useRouter();
+  const { loading, setLoading } = useLoader();
 
   const [moviesByCategory, setMoviesByCategory] = useState<MovieApiResponse>(
     {}
   );
   const [featuredMovie, setFeaturedMovie] = useState<Movie | null>(null);
-  const [loading, setLoading] = useState(true);
+
   const [error, setError] = useState<string | null>(null);
   const BACKEND_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_BASE_URL!;
 
@@ -171,11 +172,7 @@ export default function DashboardPage() {
 
       {/* Movie Lists */}
       <div className="container py-5">
-        {loading && (
-          <div className="text-center text-secondary py-5">
-            Loading movies...
-          </div>
-        )}
+
         {error && <div className="alert alert-danger">{error}</div>}
         {!loading && !error && Object.keys(moviesByCategory).length === 0 && (
           <div className="text-center text-secondary">No movies found.</div>

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "next/navigation";
 import ReactPlayer from "react-player";
+import { useLoader } from "@/utils/LoaderContext";
 
 const spinnerStyle: React.CSSProperties = {
   position: 'absolute',
@@ -78,6 +79,7 @@ if (styleSheet && !document.getElementById('custom-spinner-keyframes')) {
 
 
 export default function WatchPage() {
+  const { setLoading } = useLoader();
   const { videoId } = useParams();
   const [video, setVideo] = useState<any>(null);
   const [error, setError] = useState("");
@@ -92,6 +94,7 @@ export default function WatchPage() {
   // Fetch video metadata and check ad in a single call
   useEffect(() => {
     const fetchVideoAndAd = async () => {
+      setLoading(true); // Start global loader
       try {
         const res = await fetch(
           `${BACKEND_BASE_URL}/api/videos/stream/${videoId}`,
@@ -118,6 +121,8 @@ export default function WatchPage() {
         setPlayingAd(false);
       } catch (err) {
         setError("Video not found");
+      } finally {
+        setLoading(false); // Stop global loader
       }
     };
     fetchVideoAndAd();
@@ -142,20 +147,9 @@ export default function WatchPage() {
     );
   }
   if (!video) {
-    // Inline loading skeleton from loading.tsx
-    return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="animate-pulse">
-          <div className="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg mb-6" />
-          <div className="space-y-4">
-            <div className="h-4 bg-gray-200 rounded w-1/2" />
-            <div className="h-4 bg-gray-200 rounded w-3/4" />
-          </div>
-        </div>
-      </div>
-    );
+    // Only show the global loader, no local skeleton
+    return null;
   }
-
 
   // Optionally, use a thumbnail or fallback image for the light prop
   const videoThumb = video?.poster || video?.thumbnail || undefined;
